@@ -38,18 +38,18 @@ The Putrajaya Public Library Management System is a comprehensive, web-based app
 - Admin & Librarian Dashboards
 - Notifications & Reports
 
-## 🗃️ Database Design
+##  Database Design
 - Normalized structure with key tables:
   - `tbl_UserMaster`, `tbl_BookMaster`, `tbl_Borrow`
   - `tbl_LibrarianMaster`, `tbl_AdminMaster`, `tbl_UserNotification`
 
-## 📈 Improvement Suggestions
+##  Improvement Suggestions
 - Add offline mode for key features
 - Mobile application support
 - Advanced filtering (genre, language, publication year)
 - User feedback mechanism
 
-## 📎 License
+##  License
 This project is academic and currently not licensed for commercial use.
 
 ---
