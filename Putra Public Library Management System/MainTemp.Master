@@ -1,0 +1,237 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainTemp.master.cs" Inherits="Putra_Public_Library_Management_System.MainTemp" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <title></title>
+
+    <%-- bootstrap css --%>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <%--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">--%>
+
+    <%-- datatables css --%>
+    <link href="datatables/css/dataTables.dataTables.min.css" rel="stylesheet" />
+
+    <%-- fontawesome css--%>
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <%--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />--%>
+
+
+    <%-- custom css--%>
+    <link href="css/customstylesheet.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <%-- jquery --%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <%-- <script src="bootstrap/js/jquery-3.7.0.slim.min.js"></script> --%>
+
+    <%-- popper.js --%>
+    <script src="bootstrap/js/popper.min.js"></script>
+
+    <%-- bootstrap js --%>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <%-- datatables js --%>
+    <script src="datatables\js\dataTables.min.js"></script>
+
+    <!-- moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- malaysia postcode-->
+    <%--<script src="https://cdn.jsdelivr.net/npm/malaysia-postcodes@2.3.0/dist/malaysia-postcodes.min.js"></script>--%>
+    <script src="https://cdn.jsdelivr.net/npm/malaysia-postcodes@2.3.0/dist/malaysia-postcodes.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- solution to favicon.ico 404 error-->
+    <link rel="shortcut icon" href="#">
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        });
+    </script>
+
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-black fixed-top">
+                <div class="container-fluid">
+
+                    <!-- admin menu -->
+                    <a id="BtnAdminMenu" runat="server" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="cursor: pointer"><i class="fa-solid fa-bars"></i></a>
+
+                    <a class="navbar-brand ps-3" href="home.aspx">
+                        <img src="images/book-stack.png" width="30" height="30" />
+                        Putrajaya Public Library Management System
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse pe-5" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active d-none" href="home.aspx">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-none" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-none" href="#">Terms</a>
+                            </li>
+                        </ul>
+
+
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="View books" id="BtnViewBooks" runat="server" href="ViewBooks.aspx"><i class="fa-solid fa-book-open"></i></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Return notification" id="BtnNotification" runat="server" href="ReturnNotification.aspx"><i class="fa-solid fa-bell"></i></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Books cart" id="btnBookCart" runat="server" href="BookCart.aspx"><i class="fa-solid fa-cart-shopping"></i></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="BtnUsrLogin" runat="server" href="UserLogin.aspx">Login</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="BtnSignUp" runat="server" href="UserSignUp.aspx">Sign Up</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <div class="dropdown-center">
+                                    <asp:LinkButton class="nav-link dropdown-toggle" ID="LinkButtonHllUsr" runat="server" Visible="False" data-bs-toggle="dropdown" aria-expanded="false">Hello User</asp:LinkButton>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                        <li><a class="nav-link btn btn-outline-primary text-center" href="UserProfile.aspx">My Profile</a></li>
+                                        <li><a class="nav-link btn btn-outline-info text-center" href="UserIssuingHistory.aspx">Borrowing History</a></li>
+                                        <li>
+                                            <asp:LinkButton class="nav-link btn btn-outline-danger" ID="LinkButtonLgt" runat="server" Visible="False" OnClick="LinkButtonLgt_Click">Logout</asp:LinkButton>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+        <!-- logout alert -->
+        <div id="logoutAlert" class="container mt-3"></div>
+
+        <!-- Main Content Placeholder -->
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- Main Content Placeholder -->
+
+        <!-- admin / librarian menu offcanvas-->
+        <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Management Menu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-sm-column">
+                    <li class="nav-item">
+                        <a class="nav-link" runat="server" href="home.aspx">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnDash" runat="server" href="Dashboard.aspx">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnAuthMngmnt" runat="server" href="AuthorMngmnt.aspx">Author Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnPubMngmnt" runat="server" href="PublisherMngmnt.aspx">Publisher Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnUserMngmnt" runat="server" href="MemberMngmnt.aspx">User Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnLibMngmnt" runat="server" href="LibrarianMngmnt.aspx">Librarian Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnApproveReturn" runat="server" href="AdminReturnApproval.aspx">Approve User Returns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnBInventory" runat="server" href="BookInventory.aspx">Book Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnBIssue" runat="server" href="BookIssuing.aspx">Book Issue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="BtnBRet" runat="server" href="BookReturning.aspx">Book Return</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- normal modal -->
+        <div class="modal fade" id="messageModalInfo" tabindex="-1" aria-labelledby="messageModalLabelInfo" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messageModalLabelInfo">Message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalMessageBodyInfo">
+                        <!-- Message here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div id="footer1" class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>
+                            <a class="footerlinks" id="BtnAdLogin" runat="server" href="AdminLogin.aspx">Admin Login</a>
+                            &nbsp;
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer2" class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p style="color: whitesmoke;">
+                            &copy; All Right Reserved.
+                            <a class="footerlinks">Afnan Rahman</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </form>
+</body>
+
+</html>

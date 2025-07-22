@@ -1,0 +1,78 @@
+﻿
+.footerlinks{
+
+    color:#ffffff;
+    text-decoration: none !important;
+    
+}
+
+.footerlinks:hover{
+    color:#ffd800;
+}
+
+
+ul.nav.flex-sm-column li.nav-item a.nav-link:hover {
+    color: yellow;
+}
+
+
+
+#footer1 {
+    background: #FF5733; /* Vibrant orange */
+}
+
+#footer2{
+    background: #C70039; /* Vibrant red */
+}
+
+/*CAROUSEL*/
+
+.carousel-inner img {
+    height: 40rem;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    bottom: 20%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+@media (max-width: 992px) {
+    .carousel-inner img {
+        height: 30rem;
+    }
+
+    .carousel-caption {
+        bottom: 15%;
+        font-size: 0.9rem;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-inner img {
+        height: 20rem;
+    }
+
+    .carousel-caption {
+        bottom: 10%;
+        font-size: 0.8rem;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
